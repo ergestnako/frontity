@@ -17,13 +17,13 @@ const CommentsStore = {
 };
 
 export const theme: Namespace = {
-  Root: () => (
+  root: () => (
     <>
       <div>Hi from Extension example 2!</div>
       <Dynamic />
     </>
   ),
-  Fills: () => <div>I am a fill of extension example 2</div>,
+  fills: () => <div>I am a fill of extension example 2</div>,
   Store: ThemeStore
 };
 

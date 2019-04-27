@@ -5,6 +5,12 @@ import { hydrate as hydrateEmotion } from "emotion";
 import App from "../app";
 import createStores from "../stores/client";
 
+declare global {
+  interface Window {
+    frontity: any;
+  }
+}
+
 export default async ({ namespaces }) => {
   // Hydrate Emotion.
   const ids = document.getElementById("__EMOTION_HYDRATATION_IDS__");
@@ -15,7 +21,7 @@ export default async ({ namespaces }) => {
     );
 
   // Create the stores.
-  const stores = createStores({ namespaces });
+  const stores = (window.frontity = createStores({ namespaces }));
   // Wait until the store has been initialized. This waits for the onIntilize actions.
   await stores.initialized;
 

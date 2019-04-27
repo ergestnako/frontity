@@ -1,4 +1,4 @@
-import { State } from "./types";
+import { State } from "../../types";
 
 const state: State = {
   path: "/",

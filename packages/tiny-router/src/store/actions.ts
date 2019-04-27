@@ -1,13 +1,15 @@
-import { Actions } from "./types";
+import { Actions } from "../../types";
 
 const actions: Actions = {
   set: ({ state }, pathOrObj) => {
-    if (typeof pathOrObj === "string") {
-      state.path = pathOrObj;
-      state.page = null;
-    } else {
-      state.path = pathOrObj.path;
-      state.page = pathOrObj.page;
+    const path = typeof pathOrObj === "string" ? pathOrObj : pathOrObj.path;
+    const page = typeof pathOrObj === "string" ? null : pathOrObj.page;
+
+    state.path = path;
+    state.page = page;
+
+    if (typeof window !== "undefined") {
+      window.history.pushState({}, "", path);
     }
   }
 };
